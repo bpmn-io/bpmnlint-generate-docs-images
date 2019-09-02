@@ -8,6 +8,7 @@
     "test:bpmnlint": "(cd tmp && npx degit github:bpmn-io/bpmnlint bpmnlint --force && node ../cmd.js bpmnlint)",
     "test:example": "(cd tmp && npx degit github:bpmn-io/bpmnlint-plugin-example example --force && node ../cmd.js example)"
   },
+  "bin": "cmd.js",
   "publishConfig": {
     "access": "public"
   },

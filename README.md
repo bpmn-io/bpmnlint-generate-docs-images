@@ -1,5 +1,7 @@
 # bpmnlint-generate-docs-images
 
+[![Build Status](https://travis-ci.com/bpmn-io/bpmnlint-generate-docs-images.svg?branch=master)](https://travis-ci.com/bpmn-io/bpmnlint-generate-docs-images)
+
 Generate documentation images for your bpmnlint rules.
 
 ## Usage

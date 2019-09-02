@@ -1,0 +1,35 @@
+{
+  "name": "bpmnlint-generate-images",
+  "version": "0.0.0",
+  "description": "Generate documentation images for bpmnlint rules",
+  "scripts": {
+    "pretest": "mkdir -p tmp",
+    "test": "run-s test:*",
+    "test:bpmnlint": "(cd tmp && npx degit github:bpmn-io/bpmnlint#rule-documentation bpmnlint --force && node ../cmd.js bpmnlint)",
+    "test:example": "(cd tmp && npx degit github:bpmn-io/bpmnlint-plugin-example example --force && node ../cmd.js example)"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bpmn-io/bpmnlint-generate-images.git"
+  },
+  "author": {
+    "name": "Nico Rehwaldt",
+    "url": "https://github.com/nikku"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "bpmn-js": "^5.0.4",
+    "bpmn-js-bpmnlint": "^0.12.4",
+    "bpmnlint": "^6.1.1",
+    "mri": "^1.1.4",
+    "puppeteer": "^1.19.0",
+    "rollup": "^1.20.3",
+    "rollup-plugin-bpmnlint": "^0.1.4",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "tiny-glob": "^0.2.6"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.5"
+  }
+}

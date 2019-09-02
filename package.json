@@ -1,5 +1,5 @@
 {
-  "name": "bpmnlint-generate-docs-images",
+  "name": "@bpmn-io/bpmnlint-generate-docs-images",
   "version": "0.0.0",
   "description": "Generate documentation images for bpmnlint rules",
   "scripts": {

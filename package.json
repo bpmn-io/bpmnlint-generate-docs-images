@@ -1,6 +1,6 @@
 {
   "name": "@bpmn-io/bpmnlint-generate-docs-images",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Generate documentation images for bpmnlint rules",
   "scripts": {
     "pretest": "mkdir -p tmp",

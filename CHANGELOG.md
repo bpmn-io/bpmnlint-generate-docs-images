@@ -6,6 +6,10 @@ All notable changes to [bpmnlint-generate-docs-images](https://github.com/bpmn-i
 
 ___Note:__ Yet to be released changes appear here._
 
+## 0.1.2
+
+* `CHORE`: expose version
+
 ## 0.1.1
 
 * `FIX`: expose bin

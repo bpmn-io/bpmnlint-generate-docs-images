@@ -58,7 +58,7 @@ function renderDiagram(diagramXML) {
 
       const delta = {
         x: - Math.round(inner.x) + 50,
-        y: - Math.round(inner.y) + 50
+        y: - Math.round(inner.y) + 25
       };
 
       modeling.moveElements(canvas.getRootElement().children, delta);

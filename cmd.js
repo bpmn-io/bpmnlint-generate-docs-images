@@ -150,6 +150,12 @@ async function run() {
     }
   });
 
+  if (args.version) {
+    console.log(require('./package').version);
+
+    return;
+  }
+
   if (args._.length !== 1 || args.help) {
     return fail('Usage: bpmnlint-generate-images [pluginDirectory]');
   }

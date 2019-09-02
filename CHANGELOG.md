@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to [bpmnlint-generate-images](https://github.com/bpmn-io/bpmnlint-generate-images) are documented here. We use [semantic versioning](http://semver.org/) for releases.
+All notable changes to [bpmnlint-generate-docs-images](https://github.com/bpmn-io/bpmnlint-generate-docs-images) are documented here. We use [semantic versioning](http://semver.org/) for releases.
 
 ## Unreleased
 

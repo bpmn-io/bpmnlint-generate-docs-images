@@ -1,16 +1,16 @@
 {
-  "name": "bpmnlint-generate-images",
+  "name": "bpmnlint-generate-docs-images",
   "version": "0.0.0",
   "description": "Generate documentation images for bpmnlint rules",
   "scripts": {
     "pretest": "mkdir -p tmp",
     "test": "run-s test:*",
-    "test:bpmnlint": "(cd tmp && npx degit github:bpmn-io/bpmnlint#rule-documentation bpmnlint --force && node ../cmd.js bpmnlint)",
+    "test:bpmnlint": "(cd tmp && npx degit github:bpmn-io/bpmnlint bpmnlint --force && node ../cmd.js bpmnlint)",
     "test:example": "(cd tmp && npx degit github:bpmn-io/bpmnlint-plugin-example example --force && node ../cmd.js example)"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bpmn-io/bpmnlint-generate-images.git"
+    "url": "git+https://github.com/bpmn-io/bpmnlint-generate-docs-images.git"
   },
   "author": {
     "name": "Nico Rehwaldt",

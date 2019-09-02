@@ -1,4 +1,4 @@
-# bpmnlint-generate-images
+# bpmnlint-generate-docs-images
 
 Generate documentation images for your bpmnlint rules.
 
@@ -10,7 +10,7 @@ Generate or update images based on example BPMN 2.0 files via this tool:
 
 ```sh
 cd bpmnlint-plugin-example
-npx @bpmn-io/bpmnlint-generate-images .
+npx @bpmn-io/bpmnlint-generate-docs-images .
 ```
 
 ## License

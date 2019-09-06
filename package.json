@@ -23,8 +23,8 @@
   "license": "MIT",
   "dependencies": {
     "bpmn-js": "^5.0.4",
-    "bpmn-js-bpmnlint": "^0.12.4",
-    "bpmnlint": "^6.1.1",
+    "bpmn-js-bpmnlint": "^0.13.0",
+    "bpmnlint": "^6.2.0",
     "mri": "^1.1.4",
     "puppeteer": "^1.19.0",
     "rollup": "^1.20.3",

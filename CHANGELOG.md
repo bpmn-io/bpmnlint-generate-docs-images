@@ -6,6 +6,11 @@ All notable changes to [bpmnlint-generate-docs-images](https://github.com/bpmn-i
 
 ___Note:__ Yet to be released changes appear here._
 
+## 0.2.0
+
+* `CHORE`: update to `bpmn-js-bpmnlint@0.13` visualizations
+* `FIX`: correct image height computation
+
 ## 0.1.2
 
 * `CHORE`: expose version

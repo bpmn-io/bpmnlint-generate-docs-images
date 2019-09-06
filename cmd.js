@@ -54,7 +54,7 @@ async function generateImage(page, bpmnFile, imageFile) {
 
   await page.setViewport({
     width: 800,
-    height: viewbox.x * 2 + viewbox.height,
+    height: viewbox.y * 2 + viewbox.height,
     deviceScaleFactor: 2
   });
 

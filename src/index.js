@@ -21,8 +21,8 @@ const zoomScroll = instance.get('zoomScroll');
 const modeling = instance.get('modeling');
 
 zoomScroll.scroll({
-  dx: 20,
-  dy: 20
+  dx: -130,
+  dy: 0
 });
 
 document.querySelector('.bjs-powered-by').style.display = 'none';
@@ -48,6 +48,8 @@ function enableRule(ruleName) {
 function renderDiagram(diagramXML) {
 
   return new Promise((resolve, reject) => {
+    linting.toggle(false);
+
     instance.importXML(diagramXML, function(err) {
 
       if (err) {
@@ -57,7 +59,7 @@ function renderDiagram(diagramXML) {
       const { inner } = canvas.viewbox();
 
       const delta = {
-        x: - Math.round(inner.x) + 50,
+        x: - Math.round(inner.x) + 210,
         y: - Math.round(inner.y) + 25
       };
 
@@ -75,13 +77,11 @@ function renderDiagram(diagramXML) {
 function lint() {
 
   return new Promise((resolve) => {
-    eventBus.once('linting.completed', (event) => {
-      linting.setActive(false);
-
+    eventBus.once('linting.completed', 100, (event) => {
       return resolve(Object.keys(event.issues).length);
     });
 
-    linting.setActive(true);
+    linting.toggle(true);
   });
 }
 

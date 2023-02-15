@@ -67,9 +67,10 @@ async function renderDiagram(diagramXML) {
 
 function lint() {
 
-  return new Promise((resolve) => {
+  return new Promise(resolve => {
+
     eventBus.once('linting.completed', 100, (event) => {
-      return resolve(Object.keys(event.issues).length);
+      setTimeout(() => resolve(Object.keys(event.issues).length), 100);
     });
 
     linting.toggle(true);

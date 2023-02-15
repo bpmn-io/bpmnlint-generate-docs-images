@@ -6,7 +6,7 @@
     "all": "npm run test",
     "pretest": "mkdir -p tmp",
     "test": "run-s test:*",
-    "test:bpmnlint": "(cd tmp && npx degit github:bpmn-io/bpmnlint bpmnlint --force && node ../cmd.js bpmnlint --verbose)",
+    "test:bpmnlint": "(cd tmp && npx degit github:bpmn-io/bpmnlint bpmnlint --force && cd bpmnlint && node ../../cmd.js . --verbose)",
     "test:example": "(cd tmp && npx degit github:bpmn-io/bpmnlint-plugin-example example --force && node ../cmd.js example --verbose)"
   },
   "bin": "cmd.js",

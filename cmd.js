@@ -259,7 +259,7 @@ async function run() {
     return;
   }
 
-  const workingDirectory = path.join(__dirname, 'tmp');
+  const workingDirectory = fs.mkdtempSync(path.join(os.tmpdir(), 'bpmnlint-generate-docs-images'));
 
   verbose && console.debug('Using working directory %s', workingDirectory);
 
@@ -282,16 +282,23 @@ async function run() {
   try {
     fs.symlinkSync(pluginDirectory, path.join(workingDirectory, 'node_modules', pluginName));
 
+    for (const lib of [ 'bpmn-js', 'bpmn-js-bpmnlint' ]) {
+      fs.symlinkSync(path.dirname(require.resolve(`${lib}/package.json`)), path.join(workingDirectory, 'node_modules', lib));
+    }
+
     verbose && console.log('Compiling builder script');
 
     await pack(script);
+
+    console.log('Generating images');
+
+    await generateImages(workingDirectory, rulesWithExamples);
+
   } finally {
-    fs.unlinkSync(path.join(workingDirectory, 'node_modules', pluginName));
+    verbose && console.log('Cleaning up %s', workingDirectory);
+
+    fs.rmSync(workingDirectory, { recursive: true, force: true });
   }
-
-  console.log('Generating images');
-
-  await generateImages(workingDirectory, rulesWithExamples);
 
   console.log('\nDone.');
 }

@@ -6,6 +6,13 @@ All notable changes to [bpmnlint-generate-docs-images](https://github.com/bpmn-i
 
 ___Note:__ Yet to be released changes appear here._
 
+## 0.3.1
+
+* `CHORE`: execute in temporary directory
+* `FIX`: make work locally to `bpmnlint`
+* `DEPS`: update to `bpmn-js-bpmnlint@0.20.1`
+* `DEPS`: update to `rollup-plugin-bpmnlint@0.4.1`
+
 ## 0.3.0
 
 * `DEPS`: update dependencies

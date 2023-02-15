@@ -1,6 +1,6 @@
 {
   "name": "@bpmn-io/bpmnlint-generate-docs-images",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Generate documentation images for bpmnlint rules",
   "scripts": {
     "all": "npm run test",

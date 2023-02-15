@@ -23,11 +23,6 @@ const canvas = instance.get('canvas');
 const zoomScroll = instance.get('zoomScroll');
 const modeling = instance.get('modeling');
 
-zoomScroll.scroll({
-  dx: -130,
-  dy: 0
-});
-
 document.querySelector('.bjs-powered-by').style.display = 'none';
 document.querySelector('.djs-palette').style.display = 'none';
 
@@ -62,6 +57,11 @@ async function renderDiagram(diagramXML) {
   };
 
   modeling.moveElements(canvas.getRootElement().children, delta);
+
+  zoomScroll.scroll({
+    dx: -130,
+    dy: 0
+  });
 
   const viewbox = canvas.viewbox();
 

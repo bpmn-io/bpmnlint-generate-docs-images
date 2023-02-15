@@ -1,6 +1,6 @@
 # bpmnlint-generate-docs-images
 
-[![Build Status](https://travis-ci.com/bpmn-io/bpmnlint-generate-docs-images.svg?branch=master)](https://travis-ci.com/bpmn-io/bpmnlint-generate-docs-images)
+[![CI](https://github.com/bpmn-io/bpmnlint-generate-docs-images/actions/workflows/CI.yml/badge.svg)](https://github.com/bpmn-io/bpmnlint-generate-docs-images/actions/workflows/CI.yml)
 
 Generate documentation images for your bpmnlint rules.
 

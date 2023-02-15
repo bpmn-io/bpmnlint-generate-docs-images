@@ -45,33 +45,24 @@ function enableRule(ruleName) {
   });
 }
 
-function renderDiagram(diagramXML) {
+async function renderDiagram(diagramXML) {
 
-  return new Promise((resolve, reject) => {
-    linting.toggle(false);
+  linting.toggle(false);
 
-    instance.importXML(diagramXML, function(err) {
+  await instance.importXML(diagramXML);
 
-      if (err) {
-        return reject(err);
-      }
+  const { inner } = canvas.viewbox();
 
-      const { inner } = canvas.viewbox();
+  const delta = {
+    x: - Math.round(inner.x) + 210,
+    y: - Math.round(inner.y) + 25
+  };
 
-      const delta = {
-        x: - Math.round(inner.x) + 210,
-        y: - Math.round(inner.y) + 25
-      };
+  modeling.moveElements(canvas.getRootElement().children, delta);
 
-      modeling.moveElements(canvas.getRootElement().children, delta);
+  const viewbox = canvas.viewbox();
 
-      const viewbox = canvas.viewbox();
-
-      resolve(viewbox.inner);
-    });
-
-  });
-
+  return viewbox.inner;
 }
 
 function lint() {

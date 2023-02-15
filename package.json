@@ -3,10 +3,11 @@
   "version": "0.2.0",
   "description": "Generate documentation images for bpmnlint rules",
   "scripts": {
+    "all": "npm run test",
     "pretest": "mkdir -p tmp",
     "test": "run-s test:*",
-    "test:bpmnlint": "(cd tmp && npx degit github:bpmn-io/bpmnlint bpmnlint --force && node ../cmd.js bpmnlint)",
-    "test:example": "(cd tmp && npx degit github:bpmn-io/bpmnlint-plugin-example example --force && node ../cmd.js example)"
+    "test:bpmnlint": "(cd tmp && npx degit github:bpmn-io/bpmnlint bpmnlint --force && node ../cmd.js bpmnlint --verbose)",
+    "test:example": "(cd tmp && npx degit github:bpmn-io/bpmnlint-plugin-example example --force && node ../cmd.js example --verbose)"
   },
   "bin": "cmd.js",
   "publishConfig": {
@@ -22,13 +23,13 @@
   },
   "license": "MIT",
   "dependencies": {
-    "bpmn-js": "^5.0.4",
-    "bpmn-js-bpmnlint": "^0.13.0",
-    "bpmnlint": "^6.2.0",
+    "bpmn-js": "^11.3.1",
+    "bpmn-js-bpmnlint": "^0.20.0",
+    "bpmnlint": "^8.1.1",
     "mri": "^1.1.4",
     "puppeteer": "^1.19.0",
     "rollup": "^1.20.3",
-    "rollup-plugin-bpmnlint": "^0.1.4",
+    "rollup-plugin-bpmnlint": "^0.3.1",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-resolve": "^5.2.0",
     "tiny-glob": "^0.2.6"

@@ -15,8 +15,8 @@ const {
 
 const rollupBpmnlint = require('rollup-plugin-bpmnlint');
 
-const rollupResolve = require('rollup-plugin-node-resolve');
-const rollupCommonjs = require('rollup-plugin-commonjs');
+const rollupResolve = require('@rollup/plugin-node-resolve');
+const rollupCommonjs = require('@rollup/plugin-commonjs');
 
 function fail(...args) {
   console.error(...args);

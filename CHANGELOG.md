@@ -6,6 +6,10 @@ All notable changes to [bpmnlint-generate-docs-images](https://github.com/bpmn-i
 
 ___Note:__ Yet to be released changes appear here._
 
+## 0.3.2
+
+* `FIX`: correct captured viewport
+
 ## 0.3.1
 
 * `CHORE`: execute in temporary directory

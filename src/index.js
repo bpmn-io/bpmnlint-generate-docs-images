@@ -9,6 +9,9 @@ const $container = document.querySelector('#root');
 
 const instance = new BpmnJS({
   container: $container,
+  canvas: {
+    deferUpdate: false
+  },
   additionalModules: [
     BpmnJSBpmnlint
   ]
@@ -70,7 +73,7 @@ function lint() {
   return new Promise(resolve => {
 
     eventBus.once('linting.completed', 100, (event) => {
-      setTimeout(() => resolve(Object.keys(event.issues).length), 100);
+      resolve(Object.keys(event.issues).length);
     });
 
     linting.toggle(true);

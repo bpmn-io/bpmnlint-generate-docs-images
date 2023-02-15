@@ -146,7 +146,8 @@ async function run() {
     default: {
       'dry-run': false,
       'forgiving': false,
-      'verbose': false
+      'verbose': false,
+      'cleanup': true
     }
   });
 
@@ -165,6 +166,8 @@ async function run() {
   const dryRun = args['dry-run'];
 
   const verbose = args['verbose'];
+
+  const cleanup = args['cleanup'];
 
   const forgiving = args['forgiving'];
 
@@ -297,9 +300,9 @@ async function run() {
     await generateImages(workingDirectory, rulesWithExamples);
 
   } finally {
-    verbose && console.log('Cleaning up %s', workingDirectory);
+    cleanup && verbose && console.log('Cleaning up %s', workingDirectory);
 
-    fs.rmSync(workingDirectory, { recursive: true, force: true });
+    cleanup && fs.rmSync(workingDirectory, { recursive: true, force: true });
   }
 
   console.log('Done');

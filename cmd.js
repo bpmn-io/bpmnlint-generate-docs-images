@@ -168,6 +168,8 @@ async function run() {
 
   const forgiving = args['forgiving'];
 
+  verbose && console.log('Executing in %s', path.resolve(pluginDirectory));
+
   if (!fs.existsSync(pluginDirectory)) {
     return fail('Directory %s does not exist', pluginDirectory);
   }
@@ -238,7 +240,7 @@ async function run() {
   }
 
   if (verbose) {
-    console.log('Found %s documented rules: \n  %s\n', rulesWithExamples.length, rulesWithExamples.map(r => r.name).join('\n  '));
+    console.log('Found %s documented rules: \n  %s', rulesWithExamples.length, rulesWithExamples.map(r => r.name).join('\n  '));
   } else {
     console.log('Found %s documented rules', rulesWithExamples.length);
   }
@@ -300,7 +302,7 @@ async function run() {
     fs.rmSync(workingDirectory, { recursive: true, force: true });
   }
 
-  console.log('\nDone.');
+  console.log('Done');
 }
 
 

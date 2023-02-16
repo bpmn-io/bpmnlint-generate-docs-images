@@ -1,4 +1,4 @@
-# bpmnlint-generate-docs-images
+# `@bpmn-io/bpmnlint-generate-docs-images`
 
 [![CI](https://github.com/bpmn-io/bpmnlint-generate-docs-images/actions/workflows/CI.yml/badge.svg)](https://github.com/bpmn-io/bpmnlint-generate-docs-images/actions/workflows/CI.yml)
 

@@ -2,18 +2,18 @@
 
 [![CI](https://github.com/bpmn-io/bpmnlint-generate-docs-images/actions/workflows/CI.yml/badge.svg)](https://github.com/bpmn-io/bpmnlint-generate-docs-images/actions/workflows/CI.yml)
 
-Generate documentation images for your bpmnlint rules.
+Generate documentation images for your [bpmnlint](https://github.com/bpmn-io/bpmnlint) rules.
 
 ## Usage
 
-Generate or update images based on example BPMN 2.0 files via this tool:
+Create or update images in your `docs/rules` based on example BPMN 2.0 files via this tool:
 
 ```sh
 cd bpmnlint-plugin-example
 npx @bpmn-io/bpmnlint-generate-docs-images .
 ```
 
-This assumes that your bpmnlint plug-in adheres to the [standard structure](https://github.com/bpmn-io/bpmnlint-plugin-example) with rule documentation in the `docs/rules` folder.
+This assumes that your bpmnlint plug-in adheres to the [standard structure](https://github.com/bpmn-io/bpmnlint-plugin-example) for bpmnlint plug-ins.
 
 ## License
 

@@ -6,6 +6,12 @@ All notable changes to [bpmnlint-generate-docs-images](https://github.com/bpmn-i
 
 ___Note:__ Yet to be released changes appear here._
 
+## 0.4.0
+
+* `DEPS`: update to `bpmn-js-bpmnlint@0.21.0`
+* `DEPS`: update to `bpmn-js@13.2.0`
+* `DEPS`: update to `bpmnlint@8.3.0`
+
 ## 0.3.2
 
 * `FIX`: correct captured viewport

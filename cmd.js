@@ -67,7 +67,9 @@ async function generateImage(page, bpmnFile, imageFile) {
 
 async function generateImages(workingDirectory, rulesWithExamples) {
 
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({
+    headless: "new"
+  });
   const page = await browser.newPage();
 
   await page.goto('file://' + workingDirectory + '/index.html', { waitUntil: 'networkidle2' });

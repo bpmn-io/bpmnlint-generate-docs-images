@@ -9,7 +9,6 @@ Generate documentation images for your [bpmnlint](https://github.com/bpmn-io/bpm
 Create or update images in your `docs/rules` based on example BPMN 2.0 files via this tool:
 
 ```sh
-cd bpmnlint-plugin-example
 npx @bpmn-io/bpmnlint-generate-docs-images .
 ```
 

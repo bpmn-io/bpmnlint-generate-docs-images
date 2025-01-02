@@ -29,7 +29,7 @@
     "bpmn-js-bpmnlint": "^0.22.3",
     "bpmnlint": "^11.0.0",
     "mri": "^1.1.4",
-    "puppeteer": "^20.6.0",
+    "puppeteer": "^23.11.1",
     "rollup": "^3.29.5",
     "rollup-plugin-bpmnlint": "^0.4.1",
     "tiny-glob": "^0.2.6"

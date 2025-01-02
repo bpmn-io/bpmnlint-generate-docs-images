@@ -52,9 +52,12 @@ async function generateImage(page, bpmnFile, imageFile) {
 
   const viewbox = await page.evaluate(xml => renderDiagram(xml), xml);
 
+  const width = 800;
+  const height = Math.ceil(viewbox.y * 2 + viewbox.height);
+
   await page.setViewport({
-    width: 800,
-    height: viewbox.y * 2 + viewbox.height,
+    width,
+    height,
     deviceScaleFactor: 2
   });
 

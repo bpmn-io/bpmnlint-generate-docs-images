@@ -35,6 +35,7 @@
     "tiny-glob": "^0.2.6"
   },
   "devDependencies": {
+    "degit": "^2.8.4",
     "npm-run-all2": "^7.0.2"
   },
   "files": [

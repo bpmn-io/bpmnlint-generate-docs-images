@@ -287,6 +287,8 @@ async function run() {
 
   fs.copyFileSync(path.join(__dirname, 'src/index.js'), path.join(workingDirectory, 'index.js'));
 
+  fs.copyFileSync(require.resolve('bpmn-js/dist/assets/diagram-js.css'), path.join(workingDirectory, 'diagram-js.css'));
+  fs.copyFileSync(require.resolve('bpmn-js/dist/assets/bpmn-js.css'), path.join(workingDirectory, 'bpmn-js.css'));
   fs.copyFileSync(require.resolve('bpmn-js-bpmnlint/dist/assets/css/bpmn-js-bpmnlint.css'), path.join(workingDirectory, 'bpmn-js-bpmnlint.css'));
 
   fs.mkdirSync(path.join(workingDirectory, 'node_modules'), { recursive: true });

@@ -8,7 +8,14 @@ ___Note:__ Yet to be released changes appear here._
 
 ## 1.0.0
 
+* `FEAT`: add ability to customize working directory
+* `FIX`: correctly reset of viewbox on consecutive renders
+* `FIX`: correctly render overlay markers
+* `DEPS`: update to `bpmnlint@11`
+* `DEPS`: update to `bpmn-js@18.1.0`
 * `DEPS`: update to `bpmn-js-bpmnlint@0.22`
+* `DEPS`: update to `puppeteer@23`
+* `DEPS`: update to `rollup@4`
 
 ## 0.4.0
 

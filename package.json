@@ -30,7 +30,7 @@
     "bpmnlint": "^11.0.0",
     "mri": "^1.1.4",
     "puppeteer": "^23.11.1",
-    "rollup": "^3.29.5",
+    "rollup": "^4.30.0",
     "rollup-plugin-bpmnlint": "^0.4.1",
     "tiny-glob": "^0.2.6"
   },

@@ -176,6 +176,8 @@ async function run() {
 
   const forgiving = args['forgiving'];
 
+  const tmpDir = args['wd'] ? path.resolve(args['wd']) : os.tmpdir();
+
   verbose && console.log('Executing in %s', path.resolve(pluginDirectory));
 
   if (!fs.existsSync(pluginDirectory)) {
@@ -269,7 +271,7 @@ async function run() {
     return;
   }
 
-  const workingDirectory = fs.mkdtempSync(path.join(os.tmpdir(), 'bpmnlint-generate-docs-images'));
+  const workingDirectory = fs.mkdtempSync(path.join(tmpDir, 'bpmnlint-generate-docs-images'));
 
   verbose && console.debug('Using working directory %s', workingDirectory);
 

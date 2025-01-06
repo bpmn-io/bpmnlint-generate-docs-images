@@ -58,14 +58,14 @@ async function renderDiagram(diagramXML) {
 
   modeling.moveElements(canvas.getRootElement().children, delta);
 
+  const { x, y } = canvas.viewbox();
+
   zoomScroll.scroll({
-    dx: -130,
-    dy: 0
+    dx: x - 130,
+    dy: y - 0
   });
 
-  const viewbox = canvas.viewbox();
-
-  return viewbox.inner;
+  return canvas.viewbox().inner;
 }
 
 function lint() {

@@ -11,6 +11,7 @@ ___Note:__ Yet to be released changes appear here._
 * `FEAT`: add ability to customize working directory
 * `FIX`: correctly reset of viewbox on consecutive renders
 * `FIX`: correctly render overlay markers
+* `DEPS`: make `bpmnlint` and `puppeteer` peer dependencies ([#2](https://github.com/bpmn-io/bpmnlint-generate-docs-images/pull/2))
 * `DEPS`: update to `bpmnlint@11`
 * `DEPS`: update to `bpmn-js@18.1.0`
 * `DEPS`: update to `bpmn-js-bpmnlint@0.22`

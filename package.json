@@ -25,8 +25,8 @@
   "dependencies": {
     "@rollup/plugin-commonjs": "^28.0.3",
     "@rollup/plugin-node-resolve": "^16.0.1",
-    "bpmn-js": "^18.1.2",
-    "bpmn-js-bpmnlint": "^0.22.3",
+    "bpmn-js": "^18.4.0",
+    "bpmn-js-bpmnlint": "^0.23.0",
     "mri": "^1.1.4",
     "rollup": "^4.36.0",
     "rollup-plugin-bpmnlint": "^0.4.1",

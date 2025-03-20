@@ -28,7 +28,6 @@
     "bpmn-js": "^18.1.2",
     "bpmn-js-bpmnlint": "^0.22.3",
     "mri": "^1.1.4",
-    "puppeteer": "^23.11.1",
     "rollup": "^4.36.0",
     "rollup-plugin-bpmnlint": "^0.4.1",
     "tiny-glob": "^0.2.6"
@@ -36,7 +35,11 @@
   "devDependencies": {
     "bpmnlint": "^11.4.2",
     "degit": "^2.8.4",
-    "npm-run-all2": "^7.0.2"
+    "npm-run-all2": "^7.0.2",
+    "puppeteer": "^24.4.0"
+  },
+  "peerDependencies": {
+    "puppeteer": ">= 23"
   },
   "files": [
     "src",

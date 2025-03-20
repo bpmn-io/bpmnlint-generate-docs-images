@@ -18,6 +18,12 @@ const rollupBpmnlint = require('rollup-plugin-bpmnlint');
 const rollupResolve = require('@rollup/plugin-node-resolve');
 const rollupCommonjs = require('@rollup/plugin-commonjs');
 
+try {
+  require('bpmnlint');
+} catch (err) {
+  throw new Error('Failed to require <bpmnlint>, ensure it is available');
+}
+
 function fail(...args) {
   console.error(...args);
   process.exit(1);

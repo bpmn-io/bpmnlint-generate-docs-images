@@ -35,7 +35,7 @@
   "devDependencies": {
     "bpmnlint": "^11.4.2",
     "degit": "^2.8.4",
-    "npm-run-all2": "^7.0.2",
+    "npm-run-all2": "^8.0.4",
     "puppeteer": "^24.4.0"
   },
   "peerDependencies": {

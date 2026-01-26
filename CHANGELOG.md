@@ -6,6 +6,13 @@ All notable changes to [bpmnlint-generate-docs-images](https://github.com/bpmn-i
 
 ___Note:__ Yet to be released changes appear here._
 
+## 1.1.0
+
+* `DEPS`: update `rollup@4.56.0` dependencies
+* `DEPS`: update to `@rollup/plugin-commonjs@29.0.0`
+* `DEPS`: update to `@rollup/plugin-node-resolve@16.0.3`
+* `DEPS`: update to `bpmn-js@18.10.1`
+
 ## 1.0.0
 
 * `FEAT`: add ability to customize working directory

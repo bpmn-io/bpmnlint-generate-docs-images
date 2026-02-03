@@ -33,7 +33,7 @@
     "tiny-glob": "^0.2.6"
   },
   "devDependencies": {
-    "bpmnlint": "^11.7.3",
+    "bpmnlint": "^11.9.0",
     "degit": "^2.8.4",
     "npm-run-all2": "^8.0.4",
     "puppeteer": "^24.36.0"

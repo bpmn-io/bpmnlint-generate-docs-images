@@ -27,7 +27,7 @@
     "@rollup/plugin-commonjs": "^29.0.3",
     "@rollup/plugin-node-resolve": "^16.0.3",
     "bpmn-js": "^18.31.1",
-    "bpmn-js-bpmnlint": "^0.24.0",
+    "bpmn-js-bpmnlint": "^0.25.0",
     "mri": "^1.1.4",
     "rollup": "^4.67.4",
     "rollup-plugin-bpmnlint": "^0.4.1",

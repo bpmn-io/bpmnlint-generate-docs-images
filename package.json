@@ -24,12 +24,12 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@rollup/plugin-commonjs": "^29.0.0",
+    "@rollup/plugin-commonjs": "^29.0.3",
     "@rollup/plugin-node-resolve": "^16.0.3",
     "bpmn-js": "^18.11.0",
     "bpmn-js-bpmnlint": "^0.24.0",
     "mri": "^1.1.4",
-    "rollup": "^4.56.0",
+    "rollup": "^4.67.4",
     "rollup-plugin-bpmnlint": "^0.4.1",
     "tiny-glob": "^0.2.6",
     "which": "^6.0.1"

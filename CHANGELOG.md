@@ -6,7 +6,13 @@ All notable changes to [bpmnlint-generate-docs-images](https://github.com/bpmn-i
 
 ___Note:__ Yet to be released changes appear here._
 
+## 1.3.0
+
 * `FEAT`: use system installed Chrome (or Chromium) for image generation ([#3](https://github.com/bpmn-io/bpmnlint-generate-docs-images/pull/3))
+* `DEPS`: replace `puppeteer` with `puppeteer-core`
+* `DEPS`: update to `bpmn-js@18.31.1`
+* `DEPS`: update to `bpmn-js-bpmnlint@0.25.0`
+* `DEPS`: update to  `bpmnlint@12.0.0`
 
 ## 1.2.0
 

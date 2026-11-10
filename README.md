@@ -14,6 +14,8 @@ npx @bpmn-io/bpmnlint-generate-docs-images .
 
 This assumes that your bpmnlint plug-in adheres to the [standard structure](https://github.com/bpmn-io/bpmnlint-plugin-example) for bpmnlint plug-ins.
 
+Images are generated using system-installed headless Chrome or Chromium, or the executable specified by `PUPPETEER_EXECUTABLE_PATH` (which takes precedence).
+
 ## License
 
 MIT

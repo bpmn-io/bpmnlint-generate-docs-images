@@ -4,7 +4,9 @@ const fs = require('fs');
 const path = require('path');
 const os = require('os');
 
-const puppeteer = require('puppeteer');
+const puppeteer = require('puppeteer-core');
+
+const browserOptions = require('./src/browser-options');
 
 const mri = require('mri');
 const glob = require('tiny-glob');
@@ -77,7 +79,8 @@ async function generateImage(page, bpmnFile, imageFile) {
 async function generateImages(workingDirectory, rulesWithExamples) {
 
   const browser = await puppeteer.launch({
-    headless: "new"
+    headless: true,
+    ...browserOptions()
   });
   const page = await browser.newPage();
 

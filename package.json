@@ -6,8 +6,9 @@
     "all": "npm run test",
     "pretest": "mkdir -p tmp",
     "test": "run-s test:*",
-    "test:bpmnlint": "(cd tmp && npx degit github:bpmn-io/bpmnlint bpmnlint --force && cd bpmnlint && node ../../cmd.js . --force --verbose --wd ..)",
-    "test:example": "(cd tmp && npx degit github:bpmn-io/bpmnlint-plugin-example example --force && node ../cmd.js example)"
+    "test:unit": "node --test test/*.test.js",
+    "test:bpmnlint": "(cd tmp && npx degit github:bpmn-io/bpmnlint bpmnlint --force && cd bpmnlint && npm install --omit=dev --ignore-scripts && node ../../cmd.js . --force --verbose --wd ..)",
+    "test:example": "(cd tmp && npx degit github:bpmn-io/bpmnlint-plugin-example example --force && node ../cmd.js example --wd .)"
   },
   "bin": "cmd.js",
   "publishConfig": {
@@ -30,17 +31,18 @@
     "mri": "^1.1.4",
     "rollup": "^4.56.0",
     "rollup-plugin-bpmnlint": "^0.4.1",
-    "tiny-glob": "^0.2.6"
+    "tiny-glob": "^0.2.6",
+    "which": "^6.0.1"
   },
   "devDependencies": {
     "bpmnlint": "^11.10.0",
     "degit": "^2.8.4",
     "npm-run-all2": "^8.0.4",
-    "puppeteer": "^24.36.0"
+    "puppeteer-core": "^25.16.0"
   },
   "peerDependencies": {
     "bpmnlint": ">= 10",
-    "puppeteer": ">= 23"
+    "puppeteer-core": ">= 23"
   },
   "files": [
     "src",

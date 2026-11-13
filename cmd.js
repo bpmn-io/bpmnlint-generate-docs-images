@@ -3,6 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 const os = require('os');
+const { pathToFileURL } = require('url');
 
 const puppeteer = require('puppeteer-core');
 
@@ -101,7 +102,7 @@ async function generateImages(workingDirectory, rulesWithExamples, debug) {
     });
     page.on('requestfailed', req => console.error('[browser] request failed: %s (%s)', req.url(), req.failure()?.errorText));
 
-    const url = 'file://' + workingDirectory + '/index.html';
+    const url = pathToFileURL(path.join(workingDirectory, 'index.html')).href;
 
     debug('Loading %s', url);
 

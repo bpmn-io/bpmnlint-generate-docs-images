@@ -6,10 +6,12 @@ All notable changes to [bpmnlint-generate-docs-images](https://github.com/bpmn-i
 
 ___Note:__ Yet to be released changes appear here._
 
-* `FEAT`: log generated files, browser, console output and page errors with `--verbose` or `DEBUG=bpmnlint-generate-docs-images`
-* `FEAT`: document command line options in `--help`
-* `FIX`: build in `node_modules/.cache` of the plug-in project to support sandboxed browsers (e.g. snap Chromium)
-* `FIX`: clean up working directory on setup errors
+## 1.4.0
+
+* `FEAT`: document command line options in `--help`  ([#5](https://github.com/bpmn-io/bpmnlint-generate-docs-images/pull/5))
+* `FEAT`: add optional verbose logging ([#5](https://github.com/bpmn-io/bpmnlint-generate-docs-images/pull/5))
+* `FIX`: build in `node_modules/.cache` of the plug-in project to support sandboxed browsers ([#5](https://github.com/bpmn-io/bpmnlint-generate-docs-images/pull/5))
+* `FIX`: clean up working directory on setup errors ([#5](https://github.com/bpmn-io/bpmnlint-generate-docs-images/pull/5))
 
 ## 1.3.0
 

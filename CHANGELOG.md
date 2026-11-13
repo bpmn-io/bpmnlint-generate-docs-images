@@ -6,6 +6,8 @@ All notable changes to [bpmnlint-generate-docs-images](https://github.com/bpmn-i
 
 ___Note:__ Yet to be released changes appear here._
 
+* `FEAT`: log generated files, browser, console output and page errors with `--verbose` or `DEBUG=bpmnlint-generate-docs-images`
+
 ## 1.3.0
 
 * `FEAT`: use system installed Chrome (or Chromium) for image generation ([#3](https://github.com/bpmn-io/bpmnlint-generate-docs-images/pull/3))

@@ -76,37 +76,66 @@ async function generateImage(page, bpmnFile, imageFile) {
   return issues;
 }
 
-async function generateImages(workingDirectory, rulesWithExamples) {
+async function generateImages(workingDirectory, rulesWithExamples, debug) {
 
-  const browser = await puppeteer.launch({
+  const options = {
     headless: true,
     ...browserOptions()
-  });
+  };
+
+  debug('Launching browser with options %j', options);
+
+  const browser = await puppeteer.launch(options);
+
   try {
+    debug('Using browser %s', await browser.version());
+
     const page = await browser.newPage();
 
-    await page.goto('file://' + workingDirectory + '/index.html', { waitUntil: 'networkidle2' });
+    const pageErrors = [];
 
-    for (const rule of rulesWithExamples) {
+    page.on('console', msg => debug('[browser] %s: %s', msg.type(), msg.text()));
+    page.on('pageerror', err => {
+      pageErrors.push(err);
+      console.error('[browser] page error: %s', err.message);
+    });
+    page.on('requestfailed', req => console.error('[browser] request failed: %s (%s)', req.url(), req.failure()?.errorText));
 
-      console.log('  rule: %s', rule.name);
+    const url = 'file://' + workingDirectory + '/index.html';
 
-      await page.evaluate(name => enableRule(name), rule.name);
+    debug('Loading %s', url);
 
-      const correctResults = await generateImage(page, rule.correctBPMN, rule.correctImage);
+    await page.goto(url, { waitUntil: 'networkidle2' });
 
-      if (correctResults > 0) {
-        console.warn('found %s warnings evaluating correct BPMN', correctResults);
-      }
-
-      const incorrectResults = await generateImage(page, rule.incorrectBPMN, rule.incorrectImage);
-
-      if (incorrectResults === 0) {
-        console.error('found no errors evaluating incorrect BPMN');
-      }
+    if (pageErrors.length) {
+      throw new Error(`Failed to initialize generator page: ${pageErrors[0].message}${verbose ? '' : ' (run with --verbose for details)'}`);
     }
+
+    await renderRules(page, rulesWithExamples);
   } finally {
     await browser.close();
+  }
+}
+
+async function renderRules(page, rulesWithExamples) {
+
+  for (const rule of rulesWithExamples) {
+
+    console.log('  rule: %s', rule.name);
+
+    await page.evaluate(name => enableRule(name), rule.name);
+
+    const correctResults = await generateImage(page, rule.correctBPMN, rule.correctImage);
+
+    if (correctResults > 0) {
+      console.warn('found %s warnings evaluating correct BPMN', correctResults);
+    }
+
+    const incorrectResults = await generateImage(page, rule.incorrectBPMN, rule.incorrectImage);
+
+    if (incorrectResults === 0) {
+      console.error('found no errors evaluating incorrect BPMN');
+    }
   }
 }
 
@@ -181,7 +210,9 @@ async function run() {
 
   const dryRun = args['dry-run'];
 
-  const verbose = args['verbose'];
+  const verbose = args['verbose'] || /(^|,)\s*(\*|bpmnlint-generate-docs-images)\s*(,|$)/.test(process.env.DEBUG || '');
+
+  const debug = verbose ? (...args) => console.debug(...args) : () => {};
 
   const cleanup = args['cleanup'];
 
@@ -261,7 +292,7 @@ async function run() {
   }
 
   if (verbose) {
-    console.log('Found %s documented rules: \n  %s', rulesWithExamples.length, rulesWithExamples.map(r => r.name).join('\n  '));
+    debug('Found %s documented rules: \n  %s', rulesWithExamples.length, rulesWithExamples.map(r => r.name).join('\n  '));
   } else {
     console.log('Found %s documented rules', rulesWithExamples.length);
   }
@@ -284,7 +315,7 @@ async function run() {
 
   const workingDirectory = fs.mkdtempSync(path.join(tmpDir, 'bpmnlint-generate-docs-images'));
 
-  verbose && console.debug('Using working directory %s', workingDirectory);
+  debug('Using working directory %s', workingDirectory);
 
   fs.mkdirSync(workingDirectory, { recursive: true });
 
@@ -311,16 +342,20 @@ async function run() {
       fs.symlinkSync(path.dirname(require.resolve(`${lib}/package.json`)), path.join(workingDirectory, 'node_modules', lib));
     }
 
-    verbose && console.log('Compiling builder script');
+    debug('Compiling builder script');
 
     await pack(script);
 
+    debug('Generated .bpmnlintrc:\n%s', JSON.stringify(bpmnlintrc, null, '  '));
+    debug('Generated files in %s:\n  %s', workingDirectory, fs.readdirSync(workingDirectory).join('\n  '));
+    cleanup && debug('Pass --no-cleanup to keep the working directory for inspection');
+
     console.log('Generating images');
 
-    await generateImages(workingDirectory, rulesWithExamples);
+    await generateImages(workingDirectory, rulesWithExamples, debug);
 
   } finally {
-    cleanup && verbose && console.log('Cleaning up %s', workingDirectory);
+    cleanup && debug('Cleaning up %s', workingDirectory);
 
     cleanup && fs.rmSync(workingDirectory, { recursive: true, force: true });
   }

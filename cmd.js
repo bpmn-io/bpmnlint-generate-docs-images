@@ -2,7 +2,6 @@
 
 const fs = require('fs');
 const path = require('path');
-const os = require('os');
 const { pathToFileURL } = require('url');
 
 const puppeteer = require('puppeteer-core');
@@ -219,7 +218,7 @@ async function run() {
 
   const forgiving = args['forgiving'];
 
-  const tmpDir = args['wd'] ? path.resolve(args['wd']) : os.tmpdir();
+  const tmpDir = args['wd'] ? path.resolve(args['wd']) : path.join(pluginDirectory, 'node_modules/.cache/@bpmn-io/bpmnlint-generate-docs-images');
 
   verbose && console.log('Executing in %s', path.resolve(pluginDirectory));
 
@@ -314,29 +313,29 @@ async function run() {
     return;
   }
 
-  const workingDirectory = fs.mkdtempSync(path.join(tmpDir, 'bpmnlint-generate-docs-images'));
+  fs.mkdirSync(tmpDir, { recursive: true });
 
-  debug('Using working directory %s', workingDirectory);
-
-  fs.mkdirSync(workingDirectory, { recursive: true });
-
-  const script = path.join(workingDirectory, 'index.js');
-
-  console.log('Assembling generator');
-
-  fs.writeFileSync(path.join(workingDirectory, '.bpmnlintrc'), JSON.stringify(bpmnlintrc, null, '  '), 'utf8');
-
-  fs.copyFileSync(path.join(__dirname, 'src/index.html'), path.join(workingDirectory, 'index.html'));
-
-  fs.copyFileSync(path.join(__dirname, 'src/index.js'), path.join(workingDirectory, 'index.js'));
-
-  fs.copyFileSync(require.resolve('bpmn-js/dist/assets/diagram-js.css'), path.join(workingDirectory, 'diagram-js.css'));
-  fs.copyFileSync(require.resolve('bpmn-js/dist/assets/bpmn-js.css'), path.join(workingDirectory, 'bpmn-js.css'));
-  fs.copyFileSync(require.resolve('bpmn-js-bpmnlint/dist/assets/css/bpmn-js-bpmnlint.css'), path.join(workingDirectory, 'bpmn-js-bpmnlint.css'));
-
-  fs.mkdirSync(path.join(workingDirectory, 'node_modules'), { recursive: true });
+  const workingDirectory = fs.mkdtempSync(tmpDir + path.sep);
 
   try {
+    debug('Using working directory %s', workingDirectory);
+
+    const script = path.join(workingDirectory, 'index.js');
+
+    console.log('Assembling generator');
+
+    fs.writeFileSync(path.join(workingDirectory, '.bpmnlintrc'), JSON.stringify(bpmnlintrc, null, '  '), 'utf8');
+
+    fs.copyFileSync(path.join(__dirname, 'src/index.html'), path.join(workingDirectory, 'index.html'));
+
+    fs.copyFileSync(path.join(__dirname, 'src/index.js'), path.join(workingDirectory, 'index.js'));
+
+    fs.copyFileSync(require.resolve('bpmn-js/dist/assets/diagram-js.css'), path.join(workingDirectory, 'diagram-js.css'));
+    fs.copyFileSync(require.resolve('bpmn-js/dist/assets/bpmn-js.css'), path.join(workingDirectory, 'bpmn-js.css'));
+    fs.copyFileSync(require.resolve('bpmn-js-bpmnlint/dist/assets/css/bpmn-js-bpmnlint.css'), path.join(workingDirectory, 'bpmn-js-bpmnlint.css'));
+
+    fs.mkdirSync(path.join(workingDirectory, 'node_modules'), { recursive: true });
+
     fs.symlinkSync(pluginDirectory, path.join(workingDirectory, 'node_modules', pluginName));
 
     for (const lib of [ 'bpmn-js', 'bpmn-js-bpmnlint' ]) {

@@ -16,6 +16,8 @@ This assumes that your bpmnlint plug-in adheres to the [standard structure](http
 
 Images are generated using system-installed headless Chrome or Chromium, or the executable specified by `PUPPETEER_EXECUTABLE_PATH` (which takes precedence).
 
+Run with `--help` to list available options.
+
 ## License
 
 MIT

@@ -20,6 +20,22 @@ const rollupBpmnlint = require('rollup-plugin-bpmnlint');
 const rollupResolve = require('@rollup/plugin-node-resolve');
 const rollupCommonjs = require('@rollup/plugin-commonjs');
 
+const USAGE = `Usage: bpmnlint-generate-docs-images [options] <pluginDirectory>
+
+Options:
+  --dry-run      Print the generated .bpmnlintrc without generating images
+  --forgiving    Continue if rule examples are missing
+  --verbose      Log generated files, browser details and browser output
+                 (or set DEBUG=bpmnlint-generate-docs-images)
+  --wd <dir>     Parent directory for build files
+                 (default: local cache directory)
+  --no-cleanup   Keep build files after completion
+  --version      Print version
+  --help         Print this help
+
+Environment:
+  PUPPETEER_EXECUTABLE_PATH  Browser executable to use`;
+
 try {
   require('bpmnlint');
 } catch (err) {
@@ -202,8 +218,14 @@ async function run() {
     return;
   }
 
-  if (args._.length !== 1 || args.help) {
-    return fail('Usage: bpmnlint-generate-images [pluginDirectory]');
+  if (args.help) {
+    console.log(USAGE);
+
+    return;
+  }
+
+  if (args._.length !== 1) {
+    return fail(USAGE);
   }
 
   const pluginDirectory = path.resolve(args._[0]);

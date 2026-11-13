@@ -82,30 +82,32 @@ async function generateImages(workingDirectory, rulesWithExamples) {
     headless: true,
     ...browserOptions()
   });
-  const page = await browser.newPage();
+  try {
+    const page = await browser.newPage();
 
-  await page.goto('file://' + workingDirectory + '/index.html', { waitUntil: 'networkidle2' });
+    await page.goto('file://' + workingDirectory + '/index.html', { waitUntil: 'networkidle2' });
 
-  for (const rule of rulesWithExamples) {
+    for (const rule of rulesWithExamples) {
 
-    console.log('  rule: %s', rule.name);
+      console.log('  rule: %s', rule.name);
 
-    await page.evaluate(name => enableRule(name), rule.name);
+      await page.evaluate(name => enableRule(name), rule.name);
 
-    const correctResults = await generateImage(page, rule.correctBPMN, rule.correctImage);
+      const correctResults = await generateImage(page, rule.correctBPMN, rule.correctImage);
 
-    if (correctResults > 0) {
-      console.warn('found %s warnings evaluating correct BPMN', correctResults);
+      if (correctResults > 0) {
+        console.warn('found %s warnings evaluating correct BPMN', correctResults);
+      }
+
+      const incorrectResults = await generateImage(page, rule.incorrectBPMN, rule.incorrectImage);
+
+      if (incorrectResults === 0) {
+        console.error('found no errors evaluating incorrect BPMN');
+      }
     }
-
-    const incorrectResults = await generateImage(page, rule.incorrectBPMN, rule.incorrectImage);
-
-    if (incorrectResults === 0) {
-      console.error('found no errors evaluating incorrect BPMN');
-    }
+  } finally {
+    await browser.close();
   }
-
-  await browser.close();
 }
 
 async function globRules(pluginDirectory) {
